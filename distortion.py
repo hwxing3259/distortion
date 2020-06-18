@@ -181,32 +181,8 @@ x_data = traindata[:, [9,10,11,12]].float() #the first parameter is now treated 
 y_data = traindata[:, 5]    #the conditional approx posterior X2|X1,y_obs is what we need
 y_data = y_data.view(-1, 1).float()
 
-
-
-
-
-
-
-
-
-traindata = pandas.read_csv("train1.csv")
-traindata = traindata.drop("Unnamed: 0",1)
-#traindata = traindata.drop("X",1)
-traindata = torch.tensor(traindata.values)
 ergmadjlkdapproxpost = pandas.read_csv("ergmadjlkdpost.csv").values
 #want: 1:2
-
-x_data = traindata[:, 21:201].float() #the first parameter is now treated as part of the input
-
-
-y_data = traindata[:, 1]    #the conditional approx posterior X2|X1,y_obs is what we need
-y_data = y_data.view(-1, 1).float()
-y_data = y_data*0.98+0.01
-
-yobs = pandas.read_csv("heatobs.csv")
-yobs = yobs.drop("Unnamed: 0",1)
-yobs=yobs.values[0:180]
-yobs=yobs.transpose()[0]
 
 bivardist = bivardistortionmap(x_data,y_data,yobs,50,1)
 bivardist.fitmap(5000,mdn_loss_fn)
