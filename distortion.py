@@ -214,18 +214,3 @@ heatmapsquare = bivardist.distortsurface(a1,b1,ergmadjlkdapproxpost[:,1],100)
 bivardist.plotsurface(heatmapsquare)
 
 
-class ListNode(object):
-    def __init__(self, x):
-        self.val = x
-        self.next = None
-
-a = ListNode(0)
-aa = a
-aa.next = ListNode(3)
-
-def rua(a):
-    a.next.next=a
-    a.next=None
-
-
-
